@@ -78,14 +78,6 @@ class GetStarted extends StatelessWidget {
                 ),
               ),
             ),
-            // Align(
-            //   alignment: Alignment.bottomLeft,
-            //   child: Image.asset(
-            //     'assets/images/doctor.png',
-            //     width: MediaQuery.of(context).size.width,
-            //     fit: BoxFit.fitWidth,
-            //   ),
-            // ),
           ],
         ),
       ),

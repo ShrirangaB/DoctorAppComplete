@@ -1,5 +1,7 @@
+import 'package:Doctors_App/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutUs extends StatelessWidget {
   @override
@@ -10,16 +12,14 @@ class AboutUs extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            child: Image.network(
-                "https://images.unsplash.com/photo-1557683304-673a23048d34?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHw%3D&w=1000&q=80"),
+            decoration: BoxDecoration(color: Color.fromRGBO(217, 224, 241, 1)),
           ),
           Padding(
-            padding: const EdgeInsets.all(35),
+            padding: const EdgeInsets.all(70),
             child: Align(
               alignment: Alignment.topCenter,
               child: Image.network(
-                "https://thepalmergroup.com/wp-content/uploads/2019/02/Healthcare-Logo-Vector.png",
-                color: Colors.white,
+                "https://lh3.googleusercontent.com/proxy/MCoairY9VH66q-WsOJ9s_jVziG22ESzi2dmS4IU1cs-tbPf-eHfNuv6tMNZP82XGImDXj59u-qs7PTT58ITDG0IvFVjsmDF3teGbNihO",
               ),
             ),
           ),
@@ -30,32 +30,80 @@ class AboutUs extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel tortor nunc. Phasellus in venenatis sapien.Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed venenatis sed lorem vel hendrerit.',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  'Skycliff IT is passionately built to excel in Quality, Value and Time driven Techno Commercial world. Our Customer First Approach with a Systemic view and Holistic approach makes Skycliff IT, a value-based, vision driven, mission-focused organization. Skycliff IT provides end-to-end solutions in Application Development and Maintenances, Product development and Consulting Services.',
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ),
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 1.62,
-            child: Row(
-              children: [
-                FlatButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Call Us',
-                      style: TextStyle(color: Colors.white, fontSize: 22),
-                    )),
-                SizedBox(
-                  width: 100,
-                ),
-                FlatButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Text Us',
-                      style: TextStyle(color: Colors.white, fontSize: 22),
-                    )),
-              ],
+            top: MediaQuery.of(context).size.height / 1.45,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(75, 5, 50, 75),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      FlatButton(
+                          onPressed: _callLauncher,
+                          child: Text(
+                            'Call Us',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 22,
+                            ),
+                          )),
+                      FlatButton(
+                          onPressed: _textLauncher,
+                          child: Text(
+                            'Text Us',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 22,
+                            ),
+                          )),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FlatButton(
+                          onPressed: _launchWebsite,
+                          child: Text(
+                            'Website',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 22,
+                            ),
+                          )),
+                      FlatButton(
+                          onPressed: _emailLauncher,
+                          child: Text(
+                            'E-mail Us',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 22,
+                            ),
+                          )),
+                    ],
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePageDoctor()),
+                        );
+                      },
+                      child: Text(
+                        'Back',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 8,
+                        ),
+                      )),
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -63,12 +111,48 @@ class AboutUs extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  "DoctorsApp",
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  "Skycliff IT",
+                  style: TextStyle(color: Colors.black, fontSize: 25),
                 ),
               )),
         ],
       ),
     );
+  }
+}
+
+_launchWebsite() async {
+  const url = 'http://www.skycliffit.com/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Couldnt launch $url';
+  }
+}
+
+_textLauncher() async {
+  const uri = "sms:1234567890," + "sms:0123456785";
+  if (await canLaunch(uri)) {
+    await launch(uri);
+  } else {
+    throw 'Couldnt launch $uri';
+  }
+}
+
+_callLauncher() async {
+  const uri = 'tel:1234567890';
+  if (await canLaunch(uri)) {
+    await launch(uri);
+  } else {
+    throw 'Couldnt launch $uri';
+  }
+}
+
+_emailLauncher() async {
+  const uri = 'mailto:abcd@test.com?body=Hi';
+  if (await canLaunch(uri)) {
+    await launch(uri);
+  } else {
+    throw 'Couldnt launch $uri';
   }
 }

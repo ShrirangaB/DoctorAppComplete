@@ -1,3 +1,4 @@
+import 'package:Doctors_App/aboutus.dart';
 import 'package:Doctors_App/loginNew.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,10 +14,9 @@ class HomePageDoctor extends StatefulWidget {
 class _HomePageDoctorState extends State<HomePageDoctor> {
   SharedPreferences logindata;
   String username;
-  //String password;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initial();
   }
@@ -227,27 +227,55 @@ class _HomePageDoctorState extends State<HomePageDoctor> {
                 padding: const EdgeInsets.all(27),
               ),
             ),
-            MaterialButton(
-              minWidth: 350,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  side: BorderSide(color: Colors.black54)),
-              textColor: Colors.white,
-              color: Colors.black54,
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Logout",
-              ),
-              onPressed: () {
-                logindata.setBool('login', true);
-                Navigator.pop(context);
-              },
-            ),
-            Text('You are logged in as $username')
           ],
         ),
         padding: const EdgeInsets.all(10),
         color: Colors.white54,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("$username"),
+              accountEmail: Text("test@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                child: Text(
+                  "S",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('BMI Calculator'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Book Yoga Sessions'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Book Swim Sessions'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                logindata.setBool('login', true);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => AboutUs()));
+              },
+            ),
+            ListTile(
+              title: Text('Logout'),
+              onTap: () {
+                logindata.setBool('login', true);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoginNew()));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

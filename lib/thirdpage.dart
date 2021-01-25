@@ -127,10 +127,10 @@ class ThirdPage extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'Dr. Stella is the top most heart surgeon in Flower\nHospital. She has done over 100 successful sugeries\nwithin past 3 years. She has achieved several\nawards for her wonderful contribution in her own\nfield. She’s available for private consultation for\ngiven schedules.',
+                          textAlign: TextAlign.justify,
                           style: TextStyle(
                             height: 1.6,
                             color: Color.fromRGBO(18, 21, 86, 70),
-                            // color: kTitleTextColor.withOpacity(0.7),
                           ),
                         ),
                       ),
@@ -154,15 +154,38 @@ class ThirdPage extends StatelessWidget {
                           onTap: () {},
                           child: DecoratedBox(
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(220, 230, 250, 1),
+                              color: Color.fromRGBO(220, 230, 250, 20),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(10),
                               child: ListTile(
-                                leading: Image.asset(
-                                  'assets/images/12jan.png',
-                                  color: Color.fromRGBO(62, 117, 248, 1),
+                                leading: Container(
+                                  height: 80,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Color.fromRGBO(207, 221, 252, 1),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '12',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromRGBO(
+                                                  53, 110, 247, 1)),
+                                        ),
+                                        Text(
+                                          'Jan',
+                                          style: TextStyle(
+                                              color: Colors.blue[800]),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 title: Text(
                                   'Consultation',
@@ -188,15 +211,38 @@ class ThirdPage extends StatelessWidget {
                           onTap: () {},
                           child: DecoratedBox(
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(230, 220, 235, 1),
+                              color: Color.fromRGBO(250, 232, 214, 1),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(10),
                               child: ListTile(
-                                leading: Image.asset(
-                                  'assets/images/13jan.png',
-                                  color: Color.fromRGBO(250, 175, 104, 1),
+                                leading: Container(
+                                  height: 80,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Color.fromRGBO(251, 242, 235, 1),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '13',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromRGBO(
+                                                  248, 172, 100, 1)),
+                                        ),
+                                        Text(
+                                          'Jan',
+                                          style: TextStyle(
+                                              color: Colors.amber[600]),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 title: Text(
                                   'Consultation',
